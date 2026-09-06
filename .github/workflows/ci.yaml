@@ -48,4 +48,4 @@ jobs:
         run: ruff check . --exit-zero
       
       - name: Install dependencies
-        run: uv install
+        run: poetry install
