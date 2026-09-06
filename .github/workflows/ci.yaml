@@ -46,3 +46,6 @@ jobs:
       
       - name: Install dependencies
         run: poetry install
+
+      - name: Dummy Training
+        run: poetry run python dummy_train.py
