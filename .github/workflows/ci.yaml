@@ -1,0 +1,51 @@
+# Workflow
+name: CI - MLOps
+
+# conditions
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# variables
+env:
+  PYTHON_VERSION: '3.10'
+
+# jobs
+jobs:
+  validacao-ambiente:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'uv'
+      
+      - name: Run script validation
+        run: python scripts/validate_environment.py
+      
+      - name: install nbstripout
+        run: pip install nbstripout
+
+      - name: Analyse notebooks
+        run: |
+          nbstripout --verify explorer.ipynb || (echo "ERROR: Notebook contains output. Please remove it before committing." && exit 1)
+        
+      - name: Install ruff (Linter)
+        run: pip install ruff
+      
+      - name: Run linter
+        run: ruff check . --exit-zero
+      
+      - name: Install dependencies
+        run: uv install
