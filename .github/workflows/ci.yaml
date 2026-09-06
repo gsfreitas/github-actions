@@ -60,4 +60,6 @@ jobs:
         run: poetry run python dummy_train_governance.py
 
       - name: Tests (PyTest)
+        env:
+          PYTHONPATH: .
         run: poetry run pytest tests/ -v
