@@ -47,5 +47,8 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
+      - name: Run ETL (prepare data)
+        run: poetry run python prepare_data.py
+
       - name: Dummy Training
         run: poetry run python dummy_train.py
