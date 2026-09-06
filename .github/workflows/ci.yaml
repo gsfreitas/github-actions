@@ -22,14 +22,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
+      - name: Install Poetry
+        run: pip install poetry
 
       - name: Install Python
         uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'uv'
+          cache: 'poetry'
       
       - name: Run script validation
         run: python scripts/validate_environment.py
