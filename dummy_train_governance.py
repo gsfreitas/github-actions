@@ -6,7 +6,7 @@ import os # Importar a biblioteca OS
 def main():
     print("Iniciando Dummy Training...")
     try:
-        df = pd.read_csv('dataset_processado.csv')
+        df = pd.read_csv('dataset_processed.csv')
         X = df[['feature1', 'feature2']]
         y = df['target']
         
