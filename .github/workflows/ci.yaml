@@ -32,7 +32,7 @@ jobs:
           cache: 'poetry'
       
       - name: Run script validation
-        run: python scripts/validate_environment.py
+        run: python validate_env.py
       
       - name: install nbstripout
         run: pip install nbstripout
