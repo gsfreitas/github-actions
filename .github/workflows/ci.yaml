@@ -58,3 +58,8 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_TOKEN: ${{ github.token }}
         run: poetry run python dummy_train_governance.py
+
+      - name: Tests (PyTest)
+        env:
+          PYTHONPATH: .
+        run: poetry run pytest tests/ -v
