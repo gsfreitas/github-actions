@@ -11,8 +11,8 @@ def main():
     df = pd.DataFrame(dados)
     
     # Salva o arquivo CSV no diretório atual
-    df.to_csv('dataset_processado.csv', index=False)
-    print("SUCESSO: dataset_processado.csv gerado com sucesso!!")
+    df.to_csv('dataset_processed.csv', index=False)
+    print("SUCESSO: dataset_processed.csv gerado com sucesso!!")
 
 if __name__ == "__main__":
     main()
