@@ -38,6 +38,7 @@ jobs:
           path: dataset_processed.csv
   
   training-model:
+    needs: preparing-data
     name: Training Model
     runs-on: ubuntu-latest
     steps:
