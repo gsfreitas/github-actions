@@ -52,3 +52,9 @@ jobs:
 
       - name: Dummy Training
         run: poetry run python dummy_train.py
+
+      - name: Dummy Training with Governance
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: poetry run python dummy_train_governance.py
