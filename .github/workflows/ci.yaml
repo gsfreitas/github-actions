@@ -32,7 +32,7 @@ jobs:
           cache: 'poetry'
       
       - name: Run script validation
-        run: python validate_env.py
+        run: python validate-env.py
       
       - name: install nbstripout
         run: pip install nbstripout
@@ -48,4 +48,4 @@ jobs:
         run: ruff check . --exit-zero
       
       - name: Install dependencies
-        run: uv install
+        run: poetry install
