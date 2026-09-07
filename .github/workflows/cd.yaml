@@ -44,6 +44,7 @@ jobs:
                 audience: sts.amazonaws.com
                 aws-region: us-east-1
                 role-to-assume: arn:aws:iam::514552919279:role/OIDCGitHubActionsRole
+                role-skip-session-tagging: true
             
             - name: Verify Identity (AWS <> OIDC)
               run: |
