@@ -17,6 +17,7 @@ jobs:
         permissions:
             contents: read
             packages: write
+            id-token: write
 
         steps:
             - name: Checkout repository
@@ -36,3 +37,16 @@ jobs:
                 push: true
                 tags: |
                     ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+            - name: AWS Auth (OIDC)
+              uses: aws-actions/configure-aws-credentials@v6.1.0
+              with:
+                audience: sts.amazonaws.com
+                aws-region: us-east-1
+                role-to-assume: arn:aws:iam::514552919279:role/OIDCGitHubActionsRole
+            
+            - name: Verify Identity (AWS <> OIDC)
+              run: |
+                echo "Verifying identity with AWS STS..."
+                aws sts get-caller-identity
+            
